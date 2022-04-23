@@ -1,4 +1,4 @@
-# git project
+# set up as git project
 # 1) run install.packages("usethis"), then
 # 2) run library(usethis), then
 # 3) https://fredaccount.stlouisfed.org/apikey to request API key, then
@@ -14,6 +14,8 @@ library(fredr)
 tbl_obfr <- tibble( fredr("obfr") )
 tbl_obfr <- select( tbl_obfr, c("date", "value"))
 tbl_obfr <- rename( tbl_obfr, rate = value )
+# just because
+write_csv( tbl_obfr, 'obfr.csv')
 
 plot_fedrate <- ggplot( data = tbl_obfr, aes( x = date, y = rate ) ) +
                   ggtitle( "Federal Overnight Funds Rate") +
