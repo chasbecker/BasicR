@@ -9,10 +9,13 @@
 # 8) restart R & RStudio
 
 
-
 rm(list=ls())
 library(tidyverse)
 library(fredr)
+
+# to make this interactive, prompt the user for the acronym
+# for the FRED data file they wish to download....
+
 tbl_obfr <- tibble( fredr("obfr") )
 tbl_obfr <- select( tbl_obfr, c("date", "value"))
 tbl_obfr <- rename( tbl_obfr, rate = value )
